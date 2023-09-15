@@ -17,12 +17,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Import(TestChannelBinderConfiguration.class)
-//@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-public class FunctionsStreamIntegrationTests {
+class FunctionsStreamIntegrationTests {
+
     @Autowired
     private InputDestination input;
+
     @Autowired
     private OutputDestination output;
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -38,4 +40,5 @@ public class FunctionsStreamIntegrationTests {
         assertThat(objectMapper.readValue(output.receive().getPayload(), OrderDispatchedMessage.class))
             .isEqualTo(expectedOutputMessage.getPayload());
     }
+
 }
