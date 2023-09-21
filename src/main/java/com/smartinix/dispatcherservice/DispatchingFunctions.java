@@ -10,16 +10,14 @@ import java.util.function.Function;
 
 @Configuration
 public class DispatchingFunctions {
-    private static final Logger log =
-        LoggerFactory.getLogger(DispatchingFunctions.class);
+
+    private static final Logger log = LoggerFactory.getLogger(DispatchingFunctions.class);
 
     @Bean
     public Function<OrderAcceptedMessage, Long> pack() {
         return orderAcceptedMessage -> {
-            log.info("The order with id {} is packed.",
-                     orderAcceptedMessage.orderId());
+            log.info("The order with id {} is packed.", orderAcceptedMessage.orderId());
             return orderAcceptedMessage.orderId();
-
         };
     }
 
